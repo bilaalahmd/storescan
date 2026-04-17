@@ -230,6 +230,10 @@
                     
                     const deleteBtn = document.createElement('button');
                     deleteBtn.textContent = 'x';
+                    const idLabel = document.createElement('p');
+                    idLabel.textContent = 'ID: ' + drawer.id;
+                    idLabel.style.cssText = 'font-size:11px; color:#777; margin-top:4px;';
+                    card.appendChild(idLabel);
                     deleteBtn.style.cssText = 'float:right; background:none; color:#777; font-size:18px; padding:0 4px;';
                     deleteBtn.onclick = function(e) {
                         e.stopPropagation();

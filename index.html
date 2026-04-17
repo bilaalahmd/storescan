@@ -226,14 +226,14 @@
                 drawers.forEach(function(drawer, index) {
                     const card = document.createElement('div');
                     card.textContent = drawer.name + ' - ' + drawer.items.length + ' items';
-                    card.onclick = function() { openDrawer(drawer.id); };
-                    
-                    const deleteBtn = document.createElement('button');
-                    deleteBtn.textContent = 'x';
                     const idLabel = document.createElement('p');
                     idLabel.textContent = 'ID: ' + drawer.id;
                     idLabel.style.cssText = 'font-size:11px; color:#777; margin-top:4px;';
                     card.appendChild(idLabel);
+                    card.onclick = function() { openDrawer(drawer.id); };
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = 'x';
                     deleteBtn.style.cssText = 'float:right; background:none; color:#777; font-size:18px; padding:0 4px;';
                     deleteBtn.onclick = function(e) {
                         e.stopPropagation();
@@ -343,7 +343,9 @@
                 const name = prompt('Enter location name:');
                 if (!name) return;
 
-                const id = 'loc-' + Date.now();
+                const id = prompt('Enter location ID for QR code (must be unique):');
+                if (!id) return;
+
                 drawers.push({ id: id, name: name, items: [] });
                 saveData();
                 renderHome();
